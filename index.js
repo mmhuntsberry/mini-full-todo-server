@@ -32,24 +32,6 @@ function authenticateToken(req, res, next) {
 }
 
 app.use(express.json());
-app.use(cors());
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Origin", "http://localhost:3000");
-
-  // Request methods we wish to allow
-  res.setHeader("Access-Control-Allow-Methods", "POST");
-
-  // REquest headers we wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  );
-  // Set to true if you need the website to include
-  // cookies in the requests set to the API.
-  res.setHeader("Access-Control-Allow-Credentials", true);
-
-  next();
-});
 app.use("/signup", signupRoutes);
 app.use("/signin", signinRoutes);
 app.use("/users", authenticateToken, userRoutes);
